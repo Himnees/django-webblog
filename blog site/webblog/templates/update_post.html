@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Add Post{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+    {% if post.author.id == user.id  %}
+        <h1>Update Post...</h1>
+        <form method='POST'>
+            
+            <div class="mb-3">
+                {% csrf_token %}
+                {{ form.media }}
+                {{ form.as_p }}
+            </div>
+            <button type='submit' class="btn btn-success">Update</button>
+    {% else %}
+        <h2>Sorry, You are not authorized User</h2> 
+    {% endif %}       
+    </form>
+{% else %}
+    <h2>Please Login</h2>
+{% endif %}
+{% endblock %}

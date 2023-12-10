@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Create Profile Pge{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+<h1>Create Profile....</h1>
+<form method='POST', enctype='multipart/form-data'>
+    
+    <div class="mb-3">
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+    </div>
+    <button type='submit' class="btn btn-primary">Submit</button>
+    
+    </form>
+{% else %}
+<h2>Please Login</h2>
+    {% endif %}
+
+{% endblock %}
